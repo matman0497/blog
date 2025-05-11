@@ -31,4 +31,9 @@ public class PostService
     {
         return _postRepository.GetById(id);
     }
+
+    public void Delete(Guid id)
+    {
+        _postRepository.Delete(id);
+    }
 }

@@ -8,4 +8,5 @@ public interface IPostRepository
     Post Create(PostFormModel post);
     Post GetById(Guid id);
     Post Update(UpdatePostFormModel post);
+    void Delete(Guid id);
 }

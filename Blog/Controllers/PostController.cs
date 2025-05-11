@@ -62,4 +62,11 @@ public class PostController : Controller
 
         return View(model);
     }
+
+    public IActionResult Delete(Guid id)
+    {
+        _postService.Delete(id);
+        
+        return RedirectToAction("Index");
+    }
 }
