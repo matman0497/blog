@@ -1,0 +1,16 @@
+﻿@using Blog.ViewModels
+@{
+    ViewData["Title"] = "Posts";
+}
+
+@foreach (PostViewModel post in Model)
+{
+    <div>
+        <p><b>@post.Title</b></p>
+        <p>@post.Content</p>
+        <p text-5xl>@post.LastChange</p>
+        <a text-5xl href="@Url.Action("Edit", "Post", new { id = @post.Id })">Edit</a>
+
+    </div>
+    <hr/>
+}
