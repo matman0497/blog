@@ -1,0 +1,65 @@
+@using Blog.Models.Read
+
+@model CommentViewCreateModel
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<div class="container mt-4">
+    <div class="card mb-3">
+        <div class="card-body">
+                @foreach (CommentViewModel comment in Model.Comments)
+            {
+                <div class="d-flex align-items-start">
+                    <img
+                        src="https://i.pravatar.cc/50"
+                        class="rounded-circle me-3"
+                        alt="User avatar"/>
+                    <div>
+                        <h6 class="mb-0">
+                            John Doe
+                            <small class="text-muted"> · 2 hours ago</small>
+                        </h6>
+                        <p class="mt-2 mb-1">
+                            @comment.Content
+                        </p>
+
+                    </div>
+                </div>
+            }
+
+            <div class="collapse mt-3" id="replyForm1">
+                
+                <form asp-action="Create">
+                    @Html.AntiForgeryToken()
+                    <div class="mb-2">
+                        <textarea
+                            asp-for="NewComment.Content"
+                            class="form-control"
+                            rows="3"
+                            placeholder="Write your reply..."
+                            required
+                        ></textarea>
+                    </div>
+                    <input type="hidden" asp-for="NewComment.PostId" value="{@Model.PostId}"/>
+                    <button type="submit" class="btn btn-sm btn-primary">
+                        Submit
+                    </button>
+                </form>
+            </div>
+
+            <button
+                class="btn btn-sm btn-outline-primary"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#replyForm1"
+                aria-expanded="false"
+                aria-controls="replyForm1"
+            >
+                Reply
+            </button>
+
+        </div>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+using Blog;
 using Blog.Repositories;
 using Blog.Services;
 
@@ -7,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<IPostRepository, InMemoryPostRepository>();
+builder.Services.AddSingleton<ICommentRepository, InMemoryCommentRepository>();
 builder.Services.AddSingleton<PostService>();
-
+builder.Services.AddSingleton<CommentService>();
+builder.Services.AddSingleton<InMemorySeeder>();
 
 var app = builder.Build();
 
